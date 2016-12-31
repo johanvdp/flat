@@ -4,12 +4,12 @@ import java.util.Map;
 
 public interface Command {
 
-    /** The type of command. */
-    String getType();
+  /** The command parameters. */
+  Map<String, String> getParameters();
 
-    /** Test only, do not effectuate the command. */
-    boolean isTest();
+  /** The type of command. */
+  String getType();
 
-    /** The command parameters. */
-    Map<String, String> getParameters();
+  /** Test only, do not effectuate the command. */
+  boolean isTest();
 }

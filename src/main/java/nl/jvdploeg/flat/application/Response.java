@@ -1,10 +1,12 @@
 package nl.jvdploeg.flat.application;
 
-import java.util.List;
-
 import nl.jvdploeg.flat.message.Message;
+
+import java.util.List;
 
 public interface Response extends Identifier {
 
-    List<Message> getMessages();
+  List<Message> getMessages();
+
+  boolean isSuccessful();
 }

@@ -4,9 +4,9 @@ import nl.jvdploeg.flat.application.Identifier;
 
 public interface Message extends Identifier {
 
-    String[] getArguments();
+  String[] getArguments();
 
-    String getMessage();
+  String getMessage();
 
-    Severity getSeverity();
+  Severity getSeverity();
 }

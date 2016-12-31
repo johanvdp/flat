@@ -7,63 +7,63 @@ import org.slf4j.LoggerFactory;
 
 public class DefaultSubscription<T> implements Subscription {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultSubscription.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DefaultSubscription.class);
 
-    private long n;
-    private final Subscriber<? super T> subscriber;
+  private long numberRequested;
+  private final Subscriber<? super T> subscriber;
 
-    public DefaultSubscription(final Subscriber<? super T> subscriber) {
-        this.subscriber = subscriber;
+  public DefaultSubscription(final Subscriber<? super T> subscriber) {
+    this.subscriber = subscriber;
+  }
+
+  @Override
+  public void cancel() {
+    numberRequested = 0;
+  }
+
+  /**
+   * Fire complete.
+   */
+  public void fireComplete() {
+    subscriber.onComplete();
+  }
+
+  /**
+   * Fire error.
+   *
+   * @param throwable
+   *          The throwable.
+   */
+  public void fireError(final Throwable throwable) {
+    subscriber.onError(throwable);
+  }
+
+  /**
+   * Fire next.
+   *
+   * @param observation
+   *          The observation.
+   */
+  public void fireNext(final T observation) {
+    if (numberRequested == Long.MAX_VALUE) {
+      subscriber.onNext(observation);
+    } else if (numberRequested > 0) {
+      numberRequested--;
+      subscriber.onNext(observation);
+    } else {
+      LOG.debug("fireNext skipped observation (no request)");
     }
+  }
 
-    @Override
-    public void cancel() {
-        n = 0;
-    }
+  /**
+   * Fire subscribe.
+   */
+  public void fireSubscribe() {
+    subscriber.onSubscribe(this);
+  }
 
-    /**
-     * Fire complete.
-     */
-    public void fireComplete() {
-        subscriber.onComplete();
-    }
-
-    /**
-     * Fire error.
-     *
-     * @param t
-     *            The throwable.
-     */
-    public void fireError(final Throwable t) {
-        subscriber.onError(t);
-    }
-
-    /**
-     * Fire next.
-     *
-     * @param observation
-     *            The observation.
-     */
-    public void fireNext(final T observation) {
-        if (n == Long.MAX_VALUE) {
-            subscriber.onNext(observation);
-        } else if (n > 0) {
-            n--;
-            subscriber.onNext(observation);
-        } else {
-            LOG.debug("fireNext skipped observation (no request)");
-        }
-    }
-
-    /**
-     * Fire subscribe.
-     */
-    public void fireSubscribe() {
-        subscriber.onSubscribe(this);
-    }
-
-    @Override
-    public void request(final long n) {
-        this.n = n;
-    }
+  @Override
+  public void request(final long numberRequested) {
+    this.numberRequested = numberRequested;
+  }
 }

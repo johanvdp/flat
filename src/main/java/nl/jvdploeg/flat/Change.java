@@ -2,11 +2,11 @@ package nl.jvdploeg.flat;
 
 public interface Change {
 
-    ChangeAction getAction();
+  ChangeAction getAction();
 
-    String getNewValue();
+  String getNewValue();
 
-    String getOldValue();
+  String getOldValue();
 
-    Path getPath();
+  Path getPath();
 }
