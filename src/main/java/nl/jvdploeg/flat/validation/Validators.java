@@ -1,11 +1,10 @@
 package nl.jvdploeg.flat.validation;
 
+import java.util.ArrayList;
+import java.util.List;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.Model;
 import nl.jvdploeg.flat.message.Message;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Collection of {@link Validator}s.

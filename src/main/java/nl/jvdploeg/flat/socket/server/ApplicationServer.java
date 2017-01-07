@@ -10,11 +10,9 @@ import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
-import nl.jvdploeg.flat.application.Application;
-
 import java.security.cert.CertificateException;
-
 import javax.net.ssl.SSLException;
+import nl.jvdploeg.flat.application.Application;
 
 public final class ApplicationServer implements Runnable {
 

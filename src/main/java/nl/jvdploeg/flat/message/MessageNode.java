@@ -1,12 +1,11 @@
 package nl.jvdploeg.flat.message;
 
+import java.util.List;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.ChangeCollector;
 import nl.jvdploeg.flat.Node;
 import nl.jvdploeg.flat.NodeValueUtils;
 import nl.jvdploeg.flat.Path;
-
-import java.util.List;
 
 public abstract class MessageNode {
 

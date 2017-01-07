@@ -2,6 +2,10 @@ package nl.jvdploeg.flat.socket.client;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import javax.net.ssl.SSLException;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.Enforcement;
 import nl.jvdploeg.flat.Model;
@@ -15,12 +19,6 @@ import nl.jvdploeg.rx.DefaultPublisher;
 import nl.jvdploeg.rx.DefaultPublisherConsumer;
 import nl.jvdploeg.rx.TypeFilter;
 import org.reactivestreams.Publisher;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import javax.net.ssl.SSLException;
 
 public class ApplicationClient implements Application {
 

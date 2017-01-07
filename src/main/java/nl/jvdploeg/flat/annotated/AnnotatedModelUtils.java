@@ -1,13 +1,12 @@
 package nl.jvdploeg.flat.annotated;
 
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 import nl.jvdploeg.flat.Model;
 import nl.jvdploeg.flat.Path;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AnnotatedModelUtils {
 

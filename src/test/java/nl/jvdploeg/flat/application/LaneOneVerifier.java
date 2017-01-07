@@ -1,15 +1,14 @@
 package nl.jvdploeg.flat.application;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import nl.jvdploeg.flat.Model;
 import nl.jvdploeg.flat.Node;
 import nl.jvdploeg.flat.message.DefaultMessage;
 import nl.jvdploeg.flat.message.Message;
 import nl.jvdploeg.flat.message.Severity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class LaneOneVerifier extends DefaultVerifier {
 

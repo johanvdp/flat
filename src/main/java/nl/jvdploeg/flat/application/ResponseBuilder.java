@@ -1,10 +1,9 @@
 package nl.jvdploeg.flat.application;
 
-import nl.jvdploeg.flat.message.Message;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import nl.jvdploeg.flat.message.Message;
 
 public class ResponseBuilder {
 

@@ -1,11 +1,10 @@
 package nl.jvdploeg.rx;
 
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
 
 public class DefaultPublisher<T> implements Publisher<T> {
 

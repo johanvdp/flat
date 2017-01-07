@@ -22,15 +22,13 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import java.io.Closeable;
+import java.net.URI;
+import javax.net.ssl.SSLException;
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.Closeable;
-import java.net.URI;
-
-import javax.net.ssl.SSLException;
 
 public final class WebSocketClient implements Closeable, Observer<String>, Publisher<String> {
 

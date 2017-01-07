@@ -1,10 +1,9 @@
 package nl.jvdploeg.flat.job;
 
+import java.util.List;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.Model;
 import nl.jvdploeg.flat.message.Message;
-
-import java.util.List;
 
 public interface Job {
 

@@ -1,5 +1,8 @@
 package nl.jvdploeg.flat.validation;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.ChangeCollector;
 import nl.jvdploeg.flat.Enforcement;
@@ -9,10 +12,6 @@ import nl.jvdploeg.flat.Path;
 import nl.jvdploeg.flat.message.Message;
 import nl.jvdploeg.flat.message.MessageNode;
 import nl.jvdploeg.nfa.TokenMatcher;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public abstract class DefaultValidator implements Validator {
 

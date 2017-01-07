@@ -1,16 +1,15 @@
 package nl.jvdploeg.flat.socket;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.application.Command;
 import nl.jvdploeg.flat.application.Response;
 import nl.jvdploeg.flat.message.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 @SuppressWarnings({ "unchecked" })
 public class JsonEncoder {

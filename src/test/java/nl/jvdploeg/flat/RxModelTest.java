@@ -1,14 +1,13 @@
 package nl.jvdploeg.flat;
 
 import io.reactivex.Observable;
+import java.util.Arrays;
 import nl.jvdploeg.nfa.Nfa;
 import nl.jvdploeg.nfa.NfaFactory;
 import nl.jvdploeg.nfa.NfaService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class RxModelTest {

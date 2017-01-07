@@ -1,10 +1,9 @@
 package nl.jvdploeg.flat.application;
 
 import io.reactivex.functions.Consumer;
+import java.io.Closeable;
 import nl.jvdploeg.flat.Model;
 import org.reactivestreams.Publisher;
-
-import java.io.Closeable;
 
 public interface Application extends Closeable {
 

@@ -1,5 +1,8 @@
 package nl.jvdploeg.flat.socket;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.ChangeAction;
 import nl.jvdploeg.flat.DefaultChange;
@@ -14,10 +17,6 @@ import nl.jvdploeg.flat.message.Severity;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class JsonRoundTripTest {
 

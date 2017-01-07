@@ -1,7 +1,6 @@
 package nl.jvdploeg.flat;
 
 import io.reactivex.functions.Consumer;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,13 +1,12 @@
 package nl.jvdploeg.flat;
 
+import java.util.Map.Entry;
+import java.util.Set;
 import nl.jvdploeg.rx.DefaultPublisher;
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class ModelPublisher implements Publisher<Change> {
 

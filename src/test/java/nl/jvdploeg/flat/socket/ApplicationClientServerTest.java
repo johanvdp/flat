@@ -1,5 +1,12 @@
 package nl.jvdploeg.flat.socket;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import javax.net.ssl.SSLException;
 import nl.jvdploeg.flat.CollectingConsumer;
 import nl.jvdploeg.flat.CollectingSubscriber;
 import nl.jvdploeg.flat.Model;
@@ -20,15 +27,6 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.net.ssl.SSLException;
 
 public class ApplicationClientServerTest {
 

@@ -1,9 +1,8 @@
 package nl.jvdploeg.flat.application;
 
-import nl.jvdploeg.flat.message.Message;
-
 import java.util.Collections;
 import java.util.List;
+import nl.jvdploeg.flat.message.Message;
 
 public class DefaultResponse implements Response {
 

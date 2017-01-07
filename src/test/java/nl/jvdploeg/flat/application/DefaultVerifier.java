@@ -1,5 +1,9 @@
 package nl.jvdploeg.flat.application;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.ChangeCollector;
 import nl.jvdploeg.flat.Model;
@@ -8,11 +12,6 @@ import nl.jvdploeg.flat.job.Job;
 import nl.jvdploeg.flat.message.DefaultMessage;
 import nl.jvdploeg.flat.message.Message;
 import nl.jvdploeg.flat.message.MessageNode;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Verifies the {@link Model}. A maintains a (persistent) list of {@link Message}s. Changes to this

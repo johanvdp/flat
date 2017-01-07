@@ -1,5 +1,8 @@
 package nl.jvdploeg.flat.application;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.DefaultChange;
 import nl.jvdploeg.flat.Model;
@@ -13,10 +16,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class VerifiersTest {
 

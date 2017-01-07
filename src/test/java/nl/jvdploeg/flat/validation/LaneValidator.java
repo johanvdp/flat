@@ -1,5 +1,8 @@
 package nl.jvdploeg.flat.validation;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Map.Entry;
 import nl.jvdploeg.flat.Model;
 import nl.jvdploeg.flat.Node;
 import nl.jvdploeg.flat.application.TestApplication;
@@ -10,10 +13,6 @@ import nl.jvdploeg.nfa.Nfa;
 import nl.jvdploeg.nfa.NfaFactory;
 import nl.jvdploeg.nfa.NfaService;
 import nl.jvdploeg.nfa.TokenMatcher;
-
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Map.Entry;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class LaneValidator extends DefaultValidator {

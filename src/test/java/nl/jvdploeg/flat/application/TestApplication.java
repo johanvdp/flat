@@ -1,6 +1,8 @@
 package nl.jvdploeg.flat.application;
 
 import io.reactivex.functions.Consumer;
+import java.io.IOException;
+import java.util.Arrays;
 import nl.jvdploeg.flat.CollectingConsumer;
 import nl.jvdploeg.flat.Enforcement;
 import nl.jvdploeg.flat.Model;
@@ -9,9 +11,6 @@ import nl.jvdploeg.flat.validation.LaneValidator;
 import nl.jvdploeg.flat.validation.Validators;
 import nl.jvdploeg.rx.DefaultPublisher;
 import org.reactivestreams.Publisher;
-
-import java.io.IOException;
-import java.util.Arrays;
 
 public class TestApplication extends AbstractApplication {
 

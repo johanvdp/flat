@@ -1,10 +1,9 @@
 package nl.jvdploeg.flat;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 public class CollectingSubscriber<T> implements Subscriber<T> {
 
