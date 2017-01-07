@@ -6,20 +6,42 @@ public class Path {
 
   private final String[] path;
 
+  /**
+   * Empty path constructor.
+   */
   public Path() {
     this(new String[0]);
   }
 
+  /**
+   * Single path element constructor.
+   * 
+   * @param path
+   *          The path element.
+   */
   public Path(final String path) {
     this(new String[] { path });
   }
 
+  /**
+   * Multiple path element constructor.
+   * 
+   * @param path
+   *          The path elements.
+   */
   public Path(final String[] path) {
     final String[] clone = new String[path.length];
     System.arraycopy(path, 0, clone, 0, path.length);
     this.path = clone;
   }
 
+  /**
+   * Create child path.
+   * 
+   * @param childName
+   *          The child name.
+   * @return The child path.
+   */
   public Path createChildPath(final String childName) {
     final String[] childPath = new String[path.length + 1];
     System.arraycopy(path, 0, childPath, 0, path.length);
@@ -27,6 +49,11 @@ public class Path {
     return new Path(childPath);
   }
 
+  /**
+   * Create parent path.
+   * 
+   * @return The parent path.
+   */
   public Path createParentPath() {
     final String[] parentPath = new String[path.length - 1];
     System.arraycopy(path, 0, parentPath, 0, path.length - 1);
@@ -63,6 +90,11 @@ public class Path {
     return path[index];
   }
 
+  /**
+   * Get path elements.
+   * 
+   * @return The path elements.
+   */
   public String[] getPath() {
     final String[] clone = new String[path.length];
     System.arraycopy(path, 0, clone, 0, path.length);

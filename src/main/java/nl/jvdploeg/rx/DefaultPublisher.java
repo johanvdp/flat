@@ -14,6 +14,9 @@ public class DefaultPublisher<T> implements Publisher<T> {
   public DefaultPublisher() {
   }
 
+  /**
+   * Notify all subscribers that nothing more will be published.
+   */
   public void publishComplete() {
     final Iterator<DefaultSubscription<T>> iterator = subscriptions.iterator();
     while (iterator.hasNext()) {
@@ -27,6 +30,12 @@ public class DefaultPublisher<T> implements Publisher<T> {
     }
   }
 
+  /**
+   * Notify all subscribers that an error occurred and nothing more will be published.
+   * 
+   * @param throwable
+   *          The error.
+   */
   public void publishError(final Throwable throwable) {
     final Iterator<DefaultSubscription<T>> iterator = subscriptions.iterator();
     while (iterator.hasNext()) {
@@ -40,6 +49,12 @@ public class DefaultPublisher<T> implements Publisher<T> {
     }
   }
 
+  /**
+   * Publish next observation to all subscribers.
+   * 
+   * @param object
+   *          The observation.
+   */
   public void publishNext(final T object) {
     final Iterator<DefaultSubscription<T>> iterator = subscriptions.iterator();
     while (iterator.hasNext()) {

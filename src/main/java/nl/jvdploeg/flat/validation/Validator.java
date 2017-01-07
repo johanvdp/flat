@@ -6,20 +6,19 @@ import nl.jvdploeg.flat.message.Message;
 
 import java.util.List;
 
+/**
+ * Validates proposed changes to the model.
+ */
 public interface Validator {
 
   /**
-   * Get resulting {@link Message}s.
-   */
-  List<Message> getMessages();
-
-  /**
-   * Evaluate the proposed changes to the model and report any objection messages.
+   * Validate proposed changes to the model and report any objections.
    *
    * @param model
    *          The model as it was before the change.
    * @param changes
    *          The (proposed) changes to the model.
+   * @return The objections.
    */
-  void validate(final Model model, final List<Change> changes);
+  List<Message> validate(final Model model, final List<Change> changes);
 }

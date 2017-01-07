@@ -11,6 +11,16 @@ public class DefaultResponse implements Response {
   private final boolean successful;
   private final List<Message> messages;
 
+  /**
+   * Constructor.
+   * 
+   * @param identifier
+   *          Unique response identifier.
+   * @param successful
+   *          True to indicate success.
+   * @param messages
+   *          Response messages.
+   */
   public DefaultResponse(final String identifier, final boolean successful,
       final List<Message> messages) {
     this.identifier = identifier;

@@ -22,6 +22,13 @@ public abstract class NodeUtils {
     return addLastAt(node, path, 0, enforcement);
   }
 
+  /**
+   * Get child nodes.
+   * 
+   * @param node
+   *          The node.
+   * @return The child nodes.
+   */
   public static Node[] getChildNodeArray(final Node node) {
     final int numberOfNodes = Integer.valueOf(node.getValue());
     final Node[] nodes = new Node[numberOfNodes];

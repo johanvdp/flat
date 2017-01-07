@@ -9,6 +9,16 @@ public class DefaultCommand implements Command {
   private final boolean test;
   private final Map<String, String> parameters;
 
+  /**
+   * Constructor.
+   * 
+   * @param type
+   *          The command type.
+   * @param test
+   *          Test the command and do not make changes effective.
+   * @param parameters
+   *          The command parameters.
+   */
   public DefaultCommand(final String type, final boolean test,
       final Map<String, String> parameters) {
     this.type = type;

@@ -24,18 +24,14 @@ public abstract class DefaultValidator implements Validator {
   }
 
   @Override
-  public List<Message> getMessages() {
-    return Collections.unmodifiableList(messages);
-  }
-
-  @Override
-  public void validate(final Model model, final List<Change> modelChanges) {
+  public List<Message> validate(final Model model, final List<Change> modelChanges) {
     if (isApplicable(modelChanges)) {
       final Model clone = new Model(model.getName() + "-" + getClass().getSimpleName(),
           Enforcement.LENIENT, model);
       ModelUtils.applyChanges(clone, modelChanges);
       verifyImpl(clone);
     }
+    return Collections.unmodifiableList(messages);
   }
 
   protected void addMessage(Message message) {

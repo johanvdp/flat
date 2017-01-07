@@ -30,6 +30,16 @@ public class ApplicationClient implements Application {
   private final DefaultPublisher<Command> commandPublisher;
   private final DefaultPublisherConsumer<Command> commandConsumer;
 
+  /**
+   * Constructor.
+   * 
+   * @param uri
+   *          The web socket target location.
+   * @throws SSLException
+   *           On error.
+   * @throws URISyntaxException
+   *           On error.
+   */
   public ApplicationClient(final URI uri) throws SSLException, URISyntaxException {
     model = new Model(WebSocketClient.class.getSimpleName(), Enforcement.LENIENT);
     commandPublisher = new DefaultPublisher<>();

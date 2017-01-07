@@ -23,12 +23,19 @@ public class DefaultChange implements Change {
   private final String oldValue;
   private final Path path;
 
+  /**
+   * Constructor.
+   * @param action The type of change.
+   * @param path  The location.
+   * @param oldValue The old value.
+   * @param newValue The new value.
+   */
   public DefaultChange(final ChangeAction action, final Path path, final String oldValue,
-      final String value) {
+      final String newValue) {
     this.action = action;
     this.path = path;
     this.oldValue = oldValue;
-    newValue = value;
+    this.newValue = newValue;
   }
 
   @Override

@@ -2,8 +2,19 @@ package nl.jvdploeg.flat;
 
 import java.util.List;
 
+/**
+ * Model utilities.
+ */
 public abstract class ModelUtils {
 
+  /**
+   * Apply change to model.
+   * 
+   * @param model
+   *          The model.
+   * @param change
+   *          The change.
+   */
   public static void applyChange(final Model model, final Change change) {
     final ChangeAction action = change.getAction();
     final Path path = change.getPath();
@@ -37,6 +48,14 @@ public abstract class ModelUtils {
     }
   }
 
+  /**
+   * Apply multiple changes to model.
+   * 
+   * @param model
+   *          The model.
+   * @param changes
+   *          The changes.
+   */
   public static void applyChanges(final Model model, final List<Change> changes) {
     for (final Change change : changes) {
       applyChange(model, change);

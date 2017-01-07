@@ -13,6 +13,13 @@ public abstract class AbstractApplication implements Application {
   protected AbstractApplication() {
   }
 
+  /**
+   * Execute {@link Job}.
+   * 
+   * @param job
+   *          The {@link Job}.
+   * @return The {@link Response}.
+   */
   public Response execute(final Job job) {
     final Transaction transaction = new Transaction(model, validators);
     final Response response = transaction.execute(job);

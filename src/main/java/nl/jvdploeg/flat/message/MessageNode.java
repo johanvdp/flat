@@ -15,21 +15,39 @@ public abstract class MessageNode {
   public static final String MESSAGE = "message";
   public static final String SEVERITY = "severity";
 
-  public static List<Change> createChanges(final Path path, final Message existingMessage,
+  /**
+   * Create changes between two messages.
+   * 
+   * @param path
+   *          The location of the created of changes.
+   * @param oldMessage
+   *          The old message.
+   * @param newMessage
+   *          The new message.
+   * @return The changes.
+   */
+  public static List<Change> createChanges(final Path path, final Message oldMessage,
       final Message newMessage) {
     final ChangeCollector collector = new ChangeCollector();
-    String oldValue = existingMessage.getSeverity().name();
+    String oldValue = oldMessage.getSeverity().name();
     String newValue = newMessage.getSeverity().name();
     collector.setNodeValue(path.createChildPath(MessageNode.SEVERITY), oldValue, newValue);
-    oldValue = existingMessage.getMessage();
+    oldValue = oldMessage.getMessage();
     newValue = newMessage.getMessage();
     collector.setNodeValue(path.createChildPath(MessageNode.MESSAGE), oldValue, newValue);
-    final String[] oldValues = existingMessage.getArguments();
+    final String[] oldValues = oldMessage.getArguments();
     final String[] newValues = newMessage.getArguments();
     collector.setNodeValue(path.createChildPath(MessageNode.ARGUMENTS), oldValues, newValues);
     return collector.getChanges();
   }
 
+  /**
+   * Create message from node.
+   * 
+   * @param node
+   *          The node.
+   * @return The created message.
+   */
   public static Message createMessage(final Node node) {
     final Node idNode = node.getChild(MessageNode.ID);
     final Node severityNode = node.getChild(MessageNode.SEVERITY);
@@ -43,6 +61,13 @@ public abstract class MessageNode {
     return createdMessage;
   }
 
+  /**
+   * Create node from message.
+   * 
+   * @param message
+   *          The message.
+   * @return The created node.
+   */
   public static Node createNode(final Message message) {
     final Node node = new Node();
     node.createChild(MessageNode.ID).setValue(message.getIdentifier());

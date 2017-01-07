@@ -21,11 +21,20 @@ public class Validators {
     this.validators = validators;
   }
 
-  public List<Message> validate(final Model world, final List<Change> changes) {
+  /**
+   * Validate proposed changes to the model and report any objections.
+   *
+   * @param model
+   *          The model as it was before the change.
+   * @param changes
+   *          The (proposed) changes to the model.
+   * @return The objections.
+   */
+  public List<Message> validate(final Model model, final List<Change> changes) {
     final List<Message> messages = new ArrayList<>();
     for (final Validator validator : validators) {
-      validator.validate(world, changes);
-      messages.addAll(validator.getMessages());
+      List<Message> objections = validator.validate(model, changes);
+      messages.addAll(objections);
     }
     return messages;
   }

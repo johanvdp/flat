@@ -26,6 +26,15 @@ import java.util.Map.Entry;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class JsonDecoder {
 
+  /**
+   * Decode json.
+   * 
+   * @param json
+   *          The json.
+   * @return As object.
+   * @throws ParseException
+   *           On error.
+   */
   public static Object decode(final String json) throws ParseException {
     final JSONParser parser = new JSONParser();
     final JSONObject obj = (JSONObject) parser.parse(json);

@@ -34,7 +34,7 @@ public class Transaction {
   private final List<Change> changes = new ArrayList<>();
 
   /**
-   * Messages collected during job execution.
+   * Build response during job execution.
    */
   private final ResponseBuilder responseBuilder = new ResponseBuilder();
 

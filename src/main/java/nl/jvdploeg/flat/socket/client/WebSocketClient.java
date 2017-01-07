@@ -68,6 +68,14 @@ public final class WebSocketClient implements Closeable, Observer<String>, Publi
 
   private final SslContext sslContext;
 
+  /**
+   * Constructor.
+   * 
+   * @param uri
+   *          The web socket target location.
+   * @throws SSLException
+   *           On error.
+   */
   public WebSocketClient(final URI uri) throws SSLException {
     LOG.info("WebSocketClient " + uri);
 
@@ -146,6 +154,12 @@ public final class WebSocketClient implements Closeable, Observer<String>, Publi
     this.subscription = subscription;
   }
 
+  /**
+   * Open web socket connection to target location.
+   * 
+   * @throws SSLException
+   *           On error.
+   */
   public void open() throws SSLException {
     LOG.info("open");
 

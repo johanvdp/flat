@@ -5,6 +5,15 @@ import java.util.List;
 
 public class DefaultMessage implements Message {
 
+  /**
+   * Find message with same identifier in list of messages.
+   * 
+   * @param list
+   *          The list of message.
+   * @param one
+   *          The message to find.
+   * @return The message found.
+   */
   public static Message findById(final List<Message> list, final Message one) {
     for (final Message candidate : list) {
       if (candidate.getIdentifier().equals(one.getIdentifier())) {
@@ -19,6 +28,18 @@ public class DefaultMessage implements Message {
   private final String message;
   private final Severity severity;
 
+  /**
+   * Constructor.
+   * 
+   * @param id
+   *          The identifier.
+   * @param severity
+   *          The severity.
+   * @param message
+   *          The message format.
+   * @param arguments
+   *          The message arguments.
+   */
   public DefaultMessage(final String id, final Severity severity, final String message,
       final String... arguments) {
     this.id = id;

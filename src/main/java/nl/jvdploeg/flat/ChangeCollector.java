@@ -20,6 +20,14 @@ public class ChangeCollector {
     changes.addAll(other);
   }
 
+  /**
+   * Add {@link Node} to model.
+   * 
+   * @param path
+   *          The location.
+   * @param node
+   *          The node.
+   */
   public void addNode(final Path path, final Node node) {
     final String value = node.getValue();
     if (path.getLength() > 0) {
@@ -45,12 +53,32 @@ public class ChangeCollector {
     changes.add(DefaultChange.remove(path));
   }
 
+  /**
+   * Set node value.
+   * 
+   * @param path
+   *          The location.
+   * @param oldValue
+   *          The old value.F
+   * @param newValue
+   *          The new value.
+   */
   public void setNodeValue(final Path path, final String oldValue, final String newValue) {
     if (!newValue.equals(oldValue)) {
       changes.add(DefaultChange.set(path, oldValue, newValue));
     }
   }
 
+  /**
+   * Set node array value.
+   * 
+   * @param path
+   *          The location.
+   * @param oldValue
+   *          The old value.
+   * @param newValue
+   *          The new value.
+   */
   public void setNodeValue(final Path path, final String[] oldValue, final String[] newValue) {
     final int oldLength = oldValue.length;
     final int newLength = newValue.length;

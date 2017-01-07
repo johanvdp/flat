@@ -2,6 +2,14 @@ package nl.jvdploeg.flat;
 
 public abstract class NodeValueUtils {
 
+  /**
+   * Create child node values.
+   * 
+   * @param node
+   *          The parent node.
+   * @param arguments
+   *          The child values.
+   */
   public static void createValueArray(final Node node, final String[] arguments) {
     node.setValue(Integer.toString(arguments.length));
     for (int i = 0; i < arguments.length; i++) {
@@ -25,6 +33,13 @@ public abstract class NodeValueUtils {
     return getBestValueIndex(node, parentPath, 0, childName, null);
   }
 
+  /**
+   * Get child node values.
+   * 
+   * @param node
+   *          The parent node.
+   * @return The child node values.
+   */
   public static String[] getValueArray(final Node node) {
     final int numberOfNodes = Integer.valueOf(node.getValue());
     final String[] nodes = new String[numberOfNodes];

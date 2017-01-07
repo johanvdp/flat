@@ -1,5 +1,8 @@
 package nl.jvdploeg.flat;
 
+/**
+ * The type of change.
+ */
 public enum ChangeAction {
   /**
    * Follow the path and add (create) the last node in the path.

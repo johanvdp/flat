@@ -17,6 +17,13 @@ public class ResponseBuilder {
     this.messages.addAll(messages);
   }
 
+  /**
+   * Build response.
+   * 
+   * @param successful
+   *          True to indicate success.
+   * @return The built reponse.
+   */
   public Response build(boolean successful) {
     String identifier = UUID.randomUUID().toString();
     DefaultResponse response = new DefaultResponse(identifier, successful, messages);

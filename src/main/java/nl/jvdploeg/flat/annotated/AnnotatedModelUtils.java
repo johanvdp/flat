@@ -28,6 +28,14 @@ public abstract class AnnotatedModelUtils {
   private static final String OPENING_BRACKET = "{";
   private static final String PATH_SEPARATOR = "/";
 
+  /**
+   * Add bean to model.
+   * 
+   * @param model
+   *          The model.
+   * @param bean
+   *          The bean.
+   */
   public static void add(Model model, Object bean) {
     // add node
     Description description = createDescription(bean);
@@ -40,6 +48,15 @@ public abstract class AnnotatedModelUtils {
     }
   }
 
+  /**
+   * Get bean from model.
+   * 
+   * @param model
+   *          The model.
+   * @param reference
+   *          The bean used as reference the location.
+   * @return The bean.
+   */
   public static <T> T get(Model model, T reference) {
     Description description = createDescription(reference);
     // collect constructor parameters
@@ -75,11 +92,27 @@ public abstract class AnnotatedModelUtils {
     }
   }
 
+  /**
+   * Remove bean from model.
+   * 
+   * @param model
+   *          The model.
+   * @param bean
+   *          The bean.
+   */
   public static void remove(Model model, Object bean) {
     Description description = createDescription(bean);
     model.remove(description.path);
   }
 
+  /**
+   * Set bean in model.
+   * 
+   * @param model
+   *          The model.
+   * @param bean
+   *          The bean.
+   */
   public static void set(Model model, Object bean) {
     Description description = createDescription(bean);
     // set node value (if present)

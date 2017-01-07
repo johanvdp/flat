@@ -18,6 +18,12 @@ public class Node {
     children = new HashMap<>();
   }
 
+  /**
+   * Copy constructor.
+   * 
+   * @param node
+   *          The original.
+   */
   public Node(final Node node) {
     value = node.value;
     children = new HashMap<>();

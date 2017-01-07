@@ -5,6 +5,12 @@ import java.util.ResourceBundle;
 
 public class Start {
 
+  /**
+   * Start application.
+   * 
+   * @param args
+   *          Any command line arguments are ignored.
+   */
   public static void main(final String[] args) {
     final Locale locale = Locale.getDefault();
     ResourceBundle bundle = ResourceBundle.getBundle("nl.jvdploeg.flat.start.Start", locale);

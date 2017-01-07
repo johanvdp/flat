@@ -6,7 +6,7 @@ import nl.jvdploeg.rx.DefaultPublisher;
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 
-/** Convert from web frame text and to application objects. */
+/** Convert from web frame text to application objects. */
 public class RxJsonDecoder implements Observer<String>, Publisher<Object> {
 
   private final DefaultPublisher<Object> publisher = new DefaultPublisher<>();

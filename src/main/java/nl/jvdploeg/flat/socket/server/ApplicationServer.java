@@ -18,6 +18,15 @@ import javax.net.ssl.SSLException;
 
 public final class ApplicationServer implements Runnable {
 
+  /**
+   * Create SSL context.
+   * 
+   * @return The SSL context.
+   * @throws CertificateException
+   *           On error.
+   * @throws SSLException
+   *           On error.
+   */
   public static SslContext createSslContext() throws CertificateException, SSLException {
     final SelfSignedCertificate ssc = new SelfSignedCertificate();
     final SslContext sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
@@ -27,7 +36,6 @@ public final class ApplicationServer implements Runnable {
 
   private SslContext sslContext;
   private final int port;
-
   private final Application application;
 
   public ApplicationServer(final Application application, final int port) {
@@ -44,6 +52,9 @@ public final class ApplicationServer implements Runnable {
     this.sslContext = sslContext;
   }
 
+  /**
+   * Start application server. Will finish after channel is closed.
+   */
   public void start() {
     final EventLoopGroup listener = new NioEventLoopGroup(1);
     final EventLoopGroup workers = new NioEventLoopGroup();

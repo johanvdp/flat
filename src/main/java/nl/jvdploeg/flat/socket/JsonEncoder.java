@@ -15,6 +15,13 @@ import java.util.Map.Entry;
 @SuppressWarnings({ "unchecked" })
 public class JsonEncoder {
 
+  /**
+   * Encode change.
+   * 
+   * @param change
+   *          The change.
+   * @return As json.
+   */
   public static JSONObject encode(final Change change) {
     final JSONObject obj = new JSONObject();
     obj.put("type", "Change");
@@ -22,6 +29,13 @@ public class JsonEncoder {
     return obj;
   }
 
+  /**
+   * Encode command.
+   * 
+   * @param command
+   *          The command.
+   * @return As json.
+   */
   public static JSONObject encode(final Command command) {
     final JSONObject obj = new JSONObject();
     obj.put("type", "Command");
@@ -29,6 +43,13 @@ public class JsonEncoder {
     return obj;
   }
 
+  /**
+   * Encode object.
+   * 
+   * @param object
+   *          The object.
+   * @return As json.
+   */
   public static JSONObject encode(final Object object) {
     if (object instanceof Change) {
       return encode((Change) object);
@@ -40,6 +61,13 @@ public class JsonEncoder {
     throw new IllegalArgumentException("unsupported object type: " + object);
   }
 
+  /**
+   * Encode response.
+   * 
+   * @param response
+   *          The response.
+   * @return As json.
+   */
   public static JSONObject encode(final Response response) {
     final JSONObject obj = new JSONObject();
     obj.put("type", "Response");
