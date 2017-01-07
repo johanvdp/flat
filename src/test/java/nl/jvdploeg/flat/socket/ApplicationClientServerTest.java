@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.net.ssl.SSLException;
+import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.CollectingConsumer;
 import nl.jvdploeg.flat.CollectingSubscriber;
+import nl.jvdploeg.flat.DefaultChange;
 import nl.jvdploeg.flat.Model;
 import nl.jvdploeg.flat.Node;
 import nl.jvdploeg.flat.Path;
@@ -122,7 +124,12 @@ public class ApplicationClientServerTest {
     // send response
     final List<Message> messages = new ArrayList<>();
     messages.add(new DefaultMessage("id", Severity.INFO, "test {}", new String[] { "test" }));
-    final DefaultResponse response = new DefaultResponse("Response", true, messages);
+    final List<Change> changes = new ArrayList<>();
+    final Change change1 = DefaultChange.add(new Path(new String[] { "A", "B" }));
+    final Change change2 = DefaultChange.set(new Path(new String[] { "A", "B" }), null, "a");
+    changes.add(change1);
+    changes.add(change2);
+    final DefaultResponse response = new DefaultResponse("Response", true, messages, changes);
     final DefaultPublisher<Response> publisher = (DefaultPublisher<Response>) serverApplication
         .getOutput();
     publisher.publishNext(response);

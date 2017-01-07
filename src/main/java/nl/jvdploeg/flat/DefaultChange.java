@@ -25,10 +25,15 @@ public class DefaultChange implements Change {
 
   /**
    * Constructor.
-   * @param action The type of change.
-   * @param path  The location.
-   * @param oldValue The old value.
-   * @param newValue The new value.
+   * 
+   * @param action
+   *          The type of change.
+   * @param path
+   *          The location.
+   * @param oldValue
+   *          The old value.
+   * @param newValue
+   *          The new value.
    */
   public DefaultChange(final ChangeAction action, final Path path, final String oldValue,
       final String newValue) {

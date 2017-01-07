@@ -60,6 +60,16 @@ public class JsonDecoder {
     return change;
   }
 
+  private static List<Change> toChanges(final JSONArray array) throws ParseException {
+    final List<Change> changes = new ArrayList<>();
+    final Iterator iterator = array.iterator();
+    while (iterator.hasNext()) {
+      final JSONObject obj = (JSONObject) iterator.next();
+      changes.add(toChange(obj));
+    }
+    return changes;
+  }
+
   private static Command toCommand(final JSONObject obj) throws ParseException {
     final String type = (String) obj.get("type");
     final boolean test = Boolean.valueOf((String) obj.get("test"));
@@ -103,7 +113,8 @@ public class JsonDecoder {
     final String identifier = (String) obj.get("id");
     final boolean successful = Boolean.parseBoolean((String) obj.get("successful"));
     final List<Message> messages = toMessages((JSONArray) obj.get("messages"));
-    final Response response = new DefaultResponse(identifier, successful, messages);
+    final List<Change> changes = toChanges((JSONArray) obj.get("changes"));
+    final Response response = new DefaultResponse(identifier, successful, messages, changes);
     return response;
   }
 

@@ -24,7 +24,7 @@ public class JsonEncoder {
   public static JSONObject encode(final Change change) {
     final JSONObject obj = new JSONObject();
     obj.put("type", "Change");
-    obj.put("frame", JsonEncoder.toJson(change));
+    obj.put("frame", JsonEncoder.changeToJson(change));
     return obj;
   }
 
@@ -38,7 +38,7 @@ public class JsonEncoder {
   public static JSONObject encode(final Command command) {
     final JSONObject obj = new JSONObject();
     obj.put("type", "Command");
-    obj.put("frame", JsonEncoder.toJson(command));
+    obj.put("frame", JsonEncoder.commandToJson(command));
     return obj;
   }
 
@@ -70,11 +70,19 @@ public class JsonEncoder {
   public static JSONObject encode(final Response response) {
     final JSONObject obj = new JSONObject();
     obj.put("type", "Response");
-    obj.put("frame", JsonEncoder.toJson(response));
+    obj.put("frame", JsonEncoder.responseToJson(response));
     return obj;
   }
 
-  private static JSONObject toJson(final Change change) {
+  private static JSONArray changesToJsonArray(final List<Change> changes) {
+    final JSONArray array = new JSONArray();
+    for (final Change change : changes) {
+      array.add(changeToJson(change));
+    }
+    return array;
+  }
+
+  private static JSONObject changeToJson(final Change change) {
     final JSONObject obj = new JSONObject();
     obj.put("action", change.getAction().name());
     final JSONArray pathArray = new JSONArray();
@@ -85,15 +93,15 @@ public class JsonEncoder {
     return obj;
   }
 
-  private static JSONObject toJson(final Command command) {
+  private static JSONObject commandToJson(final Command command) {
     final JSONObject obj = new JSONObject();
     obj.put("type", command.getType());
     obj.put("test", Boolean.toString(command.isTest()));
-    obj.put("parameters", toJson(command.getParameters()));
+    obj.put("parameters", mapToJson(command.getParameters()));
     return obj;
   }
 
-  private static JSONObject toJson(final Map<String, String> parameters) {
+  private static JSONObject mapToJson(final Map<String, String> parameters) {
     final JSONObject obj = new JSONObject();
     for (final Entry<String, String> entry : parameters.entrySet()) {
       obj.put(entry.getKey(), entry.getValue());
@@ -101,32 +109,33 @@ public class JsonEncoder {
     return obj;
   }
 
-  private static JSONObject toJson(final Response response) {
-    final JSONObject obj = new JSONObject();
-    obj.put("id", response.getIdentifier());
-    obj.put("successful", Boolean.toString(response.isSuccessful()));
-    obj.put("messages", toJsonArray(response.getMessages()));
-    return obj;
-  }
-
-  private static JSONObject toJSon(final Message message) {
-    final JSONObject obj = new JSONObject();
-    obj.put("id", message.getIdentifier());
-    obj.put("severity", message.getSeverity().name());
-    obj.put("message", message.getMessage());
-    obj.put("arguments", JsonEncoder.toJsonArray(message.getArguments()));
-    return obj;
-  }
-
-  private static JSONArray toJsonArray(final List<Message> messages) {
+  private static JSONArray messagesToJsonArray(final List<Message> messages) {
     final JSONArray array = new JSONArray();
     for (final Message message : messages) {
-      array.add(toJSon(message));
+      array.add(messageToJson(message));
     }
     return array;
   }
 
-  private static JSONArray toJsonArray(final String[] strings) {
+  private static JSONObject messageToJson(final Message message) {
+    final JSONObject obj = new JSONObject();
+    obj.put("id", message.getIdentifier());
+    obj.put("severity", message.getSeverity().name());
+    obj.put("message", message.getMessage());
+    obj.put("arguments", JsonEncoder.stringsToJsonArray(message.getArguments()));
+    return obj;
+  }
+
+  private static JSONObject responseToJson(final Response response) {
+    final JSONObject obj = new JSONObject();
+    obj.put("id", response.getIdentifier());
+    obj.put("successful", Boolean.toString(response.isSuccessful()));
+    obj.put("messages", messagesToJsonArray(response.getMessages()));
+    obj.put("changes", changesToJsonArray(response.getChanges()));
+    return obj;
+  }
+
+  private static JSONArray stringsToJsonArray(final String[] strings) {
     final JSONArray array = new JSONArray();
     for (final String string : strings) {
       array.add(string);

@@ -109,11 +109,13 @@ public class Transaction {
       job.execute(clone);
 
       final List<Message> jobMessages = job.getMessages();
-      responseBuilder.add(jobMessages);
+      responseBuilder.addMessages(jobMessages);
 
       final List<Change> jobChanges = job.getChanges();
+      responseBuilder.addChanges(jobChanges);
+
       List<Message> validatorMessages = validators.validate(clone, jobChanges);
-      responseBuilder.add(validatorMessages);
+      responseBuilder.addMessages(validatorMessages);
       if (!isValid(validatorMessages)) {
         LOG.info("< executeBreadthFirst validation failed {}", validatorMessages);
         return responseBuilder.build(false);

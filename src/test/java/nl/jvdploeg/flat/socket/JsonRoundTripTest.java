@@ -52,7 +52,10 @@ public class JsonRoundTripTest {
         new String[] { "A", "B" });
     final Message message2 = new DefaultMessage("id2", Severity.ERROR, "one ()",
         new String[] { "A" });
-    final Response original = new DefaultResponse("id0", true, Arrays.asList(message1, message2));
+    final Change change1 = DefaultChange.add(new Path(new String[] { "A", "B" }));
+    final Change change2 = DefaultChange.set(new Path(new String[] { "A", "B" }), null, "a");
+    final Response original = new DefaultResponse("id0", true, Arrays.asList(message1, message2),
+        Arrays.asList(change1, change2));
     final String json = JsonEncoder.encode(original).toString();
     final Object object = JsonDecoder.decode(json);
     Assert.assertTrue(object instanceof Response);
