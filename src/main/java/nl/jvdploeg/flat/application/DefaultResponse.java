@@ -32,30 +32,40 @@ public class DefaultResponse implements Response {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()) {
       return false;
+    }
     DefaultResponse other = (DefaultResponse) obj;
     if (changes == null) {
-      if (other.changes != null)
+      if (other.changes != null) {
         return false;
-    } else if (!changes.equals(other.changes))
+      }
+    } else if (!changes.equals(other.changes)) {
       return false;
+    }
     if (identifier == null) {
-      if (other.identifier != null)
+      if (other.identifier != null) {
         return false;
-    } else if (!identifier.equals(other.identifier))
+      }
+    } else if (!identifier.equals(other.identifier)) {
       return false;
+    }
     if (messages == null) {
-      if (other.messages != null)
+      if (other.messages != null) {
         return false;
-    } else if (!messages.equals(other.messages))
+      }
+    } else if (!messages.equals(other.messages)) {
       return false;
-    if (successful != other.successful)
+    }
+    if (successful != other.successful) {
       return false;
+    }
     return true;
   }
 

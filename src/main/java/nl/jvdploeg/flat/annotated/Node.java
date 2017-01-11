@@ -13,14 +13,14 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 public @interface Node {
 
-  /** Field names for child nodes. */
-  String[] children();
+  /** Field names for child nodes. Can be omitted. */
+  String[] children() default "";
 
   /**
-   * Path to node. Including symbolic expressions. Example: path="collection/{id}"
+   * Path to node. Can include symbolic expressions. Example: path="collection/{id}"
    */
   String path();
 
-  /** Field name for node value. */
+  /** Field name for node value. Can be omitted. */
   String value() default "";
 }

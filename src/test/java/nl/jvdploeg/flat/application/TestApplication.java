@@ -90,6 +90,7 @@ public class TestApplication extends AbstractApplication {
     if (closed) {
       throw new IllegalStateException("should not call open when closed");
     }
+    super.open();
     opened = true;
   }
 

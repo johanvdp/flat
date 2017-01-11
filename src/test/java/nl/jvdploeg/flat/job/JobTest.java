@@ -16,9 +16,9 @@ public class JobTest {
   private Model model;
 
   @Before
-  public void before() {
+  public void before() throws Exception {
     application = new TestApplication();
-    application.initialize();
+    application.open();
     model = application.getModel();
 
     Response response = application.execute(new AddCarJob(CAR_ONE));

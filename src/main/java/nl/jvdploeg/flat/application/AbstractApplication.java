@@ -31,7 +31,7 @@ public abstract class AbstractApplication implements Application {
     return model;
   }
 
-  public void initialize() {
+  public void open() throws Exception {
     model = createModel();
     validators = createValidators();
   }
