@@ -1,15 +1,30 @@
+// The author disclaims copyright to this source code.
 package nl.jvdploeg.flat;
 
 /**
- * Reflects a change in the {@link Model}.
+ * Represents a {@link Change} to the {@link Model}.
  */
 public interface Change {
 
-  ChangeAction getAction();
+  /**
+   * The type of change.<br>
+   * Never <code>null</code>.
+   */
+  ChangeType getAction();
 
-  String getNewValue();
-
-  String getOldValue();
-
+  /**
+   * What changed.<br>
+   * Never <code>null</code>.
+   */
   Path getPath();
+
+  /**
+   * The new value.
+   */
+  String getValue();
+
+  /**
+   * The old version.
+   */
+  Version getVersion();
 }

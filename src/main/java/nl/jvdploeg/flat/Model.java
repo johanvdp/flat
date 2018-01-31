@@ -1,41 +1,10 @@
+// The author disclaims copyright to this source code.
 package nl.jvdploeg.flat;
 
-public class Model {
-
-  private final Enforcement enforcement;
-  private final String name;
-  private final ModelPublisher publisher;
-  private final Node root;
-
-  /**
-   * Create a model.
-   *
-   * @param name
-   *          The name of the model.
-   * @param enforcement
-   *          The node creation strategy.
-   */
-  public Model(final String name, final Enforcement enforcement) {
-    this.name = name;
-    this.enforcement = enforcement;
-    root = new Node();
-    publisher = new ModelPublisher(this);
-  }
-
-  /**
-   * Create a model by cloning another.
-   *
-   * @param name
-   *          The name of the model.
-   * @param enforcement
-   *          The node creation strategy.
-   */
-  public Model(final String name, final Enforcement enforcement, final Model model) {
-    this.name = name;
-    this.enforcement = enforcement;
-    root = new Node(model.root);
-    publisher = new ModelPublisher(this);
-  }
+/**
+ * Provides access to a hierarchical structure of {@link Node}s and values.
+ */
+public interface Model<T extends Node<T>> {
 
   /**
    * Follow the path and add (create) the last node in the path.
@@ -43,14 +12,28 @@ public class Model {
    * @param path
    *          The path.
    */
-  public void add(final Path path) {
-    NodeUtils.addLast(root, path, enforcement);
-    publisher.publishNext(DefaultChange.add(path));
-  }
+  void add(Path path);
 
-  public String getName() {
-    return name;
-  }
+  /**
+   * Create child node.
+   *
+   * @param path
+   *          The path.
+   * @return The node.
+   */
+  T createChild(Path path);
+
+  /**
+   * Follow the path and find the last node in the path.
+   *
+   * @param path
+   *          The path.
+   * @return The last node in the path, or <code>null</code> if it does not
+   *         exist.
+   */
+  T findNode(Path path);
+
+  String getName();
 
   /**
    * Follow the path and get the last node in the path.
@@ -59,18 +42,9 @@ public class Model {
    *          The path.
    * @return The last node in the path.
    */
-  public Node getNode(final Path path) {
-    final Node node = NodeUtils.getNode(root, path);
-    return node;
-  }
+  T getNode(Path path);
 
-  public ModelPublisher getPublisher() {
-    return publisher;
-  }
-
-  public Node getRoot() {
-    return root;
-  }
+  T getRoot();
 
   /**
    * Follow the path and get the value of the last node in the path.
@@ -79,11 +53,16 @@ public class Model {
    *          The path.
    * @return The value.
    */
-  public String getValue(final Path path) {
-    final Node node = NodeUtils.getNode(root, path);
-    final String value = node.getValue();
-    return value;
-  }
+  String getValue(Path path);
+
+  /**
+   * Follow the path and get the version of the last node in the path.
+   *
+   * @param path
+   *          The path.
+   * @return The version.
+   */
+  Version getVersion(Path path);
 
   /**
    * Follow the path and remove the last node in the path.
@@ -91,27 +70,27 @@ public class Model {
    * @param path
    *          The path.
    */
-  public void remove(final Path path) {
-    NodeUtils.removeLast(root, path);
-    publisher.publishNext(DefaultChange.remove(path));
-  }
+  void remove(Path path);
 
   /**
    * Follow the path and set the value of the last node in the path.
    *
    * @param path
    *          The path.
-   * @param newValue
+   * @param value
    *          The new value.
+   * @return The old value.
    */
-  public void setValue(final Path path, final String newValue) {
-    final Node node = NodeUtils.getNode(root, path);
-    final String oldValue = node.setValue(newValue);
-    publisher.publishNext(DefaultChange.set(path, oldValue, newValue));
-  }
+  String setValue(Path path, String value);
 
-  @Override
-  public String toString() {
-    return "[" + name + ", " + enforcement + ", " + root + "]";
-  }
+  /**
+   * Follow the path and set the version of the last node in the path.
+   *
+   * @param path
+   *          The path.
+   * @param version
+   *          The new version.
+   * @return The old version.
+   */
+  Version setVersion(Path path, Version version);
 }
