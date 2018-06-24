@@ -2,7 +2,7 @@
 package nl.jvdploeg.flat.impl;
 
 import nl.jvdploeg.exception.Checks;
-import nl.jvdploeg.exception.ErrorBuilder;
+import nl.jvdploeg.exception.ThrowableBuilder;
 import nl.jvdploeg.flat.Path;
 
 /**
@@ -115,7 +115,7 @@ abstract class DefaultNodeUtils {
         break;
       default:
         child = null;
-        Checks.ARGUMENT.unexpected(enforce, "enforce");
+        Checks.ARGUMENT.invalid(enforce, "enforce");
     }
     return addAt(child, path, index + 1, enforce);
   }
@@ -184,7 +184,7 @@ abstract class DefaultNodeUtils {
     final String name = path.getName(index);
     final DefaultNode child = node.getChildren().get(name);
     if (child == null) {
-      throw new ErrorBuilder() //
+      throw ThrowableBuilder.createRuntimeExceptionBuilder() //
           .method("removeLastAt") //
           .message("path can not be removed because child does not exist") //
           .identity("node", node) //

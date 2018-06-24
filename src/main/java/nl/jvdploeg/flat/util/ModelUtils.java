@@ -4,7 +4,7 @@ package nl.jvdploeg.flat.util;
 import java.util.List;
 
 import nl.jvdploeg.exception.Checks;
-import nl.jvdploeg.exception.ErrorBuilder;
+import nl.jvdploeg.exception.ThrowableBuilder;
 import nl.jvdploeg.flat.Change;
 import nl.jvdploeg.flat.ChangeType;
 import nl.jvdploeg.flat.Model;
@@ -29,7 +29,7 @@ public abstract class ModelUtils {
         applyRemove(model, change);
         break;
       default:
-        Checks.ARGUMENT.unexpected(action, "change");
+        Checks.ARGUMENT.invalid(action, "change");
     }
   }
 
@@ -57,7 +57,7 @@ public abstract class ModelUtils {
     final Version modelVersion = model.getVersion(changePath);
     // the version of an incoming change is checked if provided
     if (changeVersion != null && !changeVersion.equals(modelVersion)) {
-      throw new ErrorBuilder() //
+      throw ThrowableBuilder.createRuntimeExceptionBuilder() //
           .method("applySet") //
           .message("can not change value because versions do not match") //
           .identity("model", model) //

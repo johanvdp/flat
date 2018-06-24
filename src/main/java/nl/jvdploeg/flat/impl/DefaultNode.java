@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import nl.jvdploeg.exception.Checks;
-import nl.jvdploeg.exception.ErrorBuilder;
+import nl.jvdploeg.exception.ThrowableBuilder;
 import nl.jvdploeg.flat.Node;
 import nl.jvdploeg.flat.Version;
 
@@ -57,7 +57,7 @@ public final class DefaultNode implements Node<DefaultNode> {
       child = new DefaultNode();
       children.put(name, child);
     } else {
-      throw new ErrorBuilder() //
+      throw ThrowableBuilder.createRuntimeExceptionBuilder() //
           .method("createChild") //
           .message("child already exist") //
           .identity("instance", this) //
